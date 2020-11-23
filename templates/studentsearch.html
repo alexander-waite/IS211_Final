@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+div {
+  width: 140px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: auto;
+  text-align: center;
+}
+</style>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+      <div>
+      <table border = 1>
+         <thead>
+            <td>Quiz ID</td>
+            <td>Quiz Score</td>
+         </thead>
+
+         {% for row in rows %}
+            <tr>
+               <td>{{row["quiz_id"]}}</td>
+               <td>{{row["quiz_score"]}}</td>
+            </tr>
+         {% endfor %}
+      </table>
+      </div>
+</body>
+</html>

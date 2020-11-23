@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+  <style>
+div {
+  width: 320px;
+  padding: 10px;
+  border: 5px solid gray;
+  margin: auto;
+  text-align: center;
+}
+</style>
+   <body>
+<div>
+    <form action = "/quiz/add" method = "post">
+    Quiz Subject: <input type="text" name="quiz_subject"><br/>
+    Quiz Question Amount: <input type="text" name="quiz_question_amount"><br/>
+    Quiz Date <input type="date" name="quiz_date"><br/>
+
+    <input type="submit" value="Submit">
+    <form action= "/clear" method="post">
+      <input type="submit" value="Clear">
+    </form>
+  </form>
+   {% if error %}
+        <p class="error"><strong>Error:</strong> {{ error }}
+      {% endif %}
+</div>
+   </body>
+</html>
