@@ -8,7 +8,7 @@ import datetime
 app = Flask(__name__)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
@@ -19,7 +19,7 @@ def login():
     return render_template('login.html', error=error)
 
 
-@app.route('/')
+"""@app.route('/')
 def indexpage():
     con = sqlite3.connect('main.db')
     con.row_factory = sqlite3.Row
@@ -29,12 +29,12 @@ def indexpage():
     cur.execute(execute_statement)
 
     rows = cur.fetchall()
-    return render_template("index2.html", rows=rows)
+    return render_template("index2.html", rows=rows)"""
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    con = sqlite3.connect('hw13.db')
+    con = sqlite3.connect('main.db')
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("select student.student_id, student.student_first_name, student.student_last_name from student")
@@ -50,7 +50,7 @@ def dashboard():
 
 @app.route('/student/add', methods=['GET', 'POST'])
 def add():
-    con = sqlite3.connect('hw13.db')
+    con = sqlite3.connect('main.db')
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("SELECT student_id FROM student WHERE student_id=(SELECT max(student_id) FROM student)")
@@ -62,7 +62,7 @@ def add():
                 student_name = request.form['student_name']
                 student_name = student_name.split(' ')
                 sfn, sln = '"' + student_name[0].strip() + '"', '"' + student_name[1].strip() + '"'
-                con = sqlite3.connect('hw13.db')
+                con = sqlite3.connect('main.db')
                 con.row_factory = sqlite3.Row
                 cur = con.cursor()
                 cur.execute(
@@ -82,7 +82,7 @@ def add():
 
 @app.route('/quiz/add', methods=['GET', 'POST'])
 def quizadd():
-    con = sqlite3.connect('hw13.db')
+    con = sqlite3.connect('main.db')
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute("SELECT quiz_id FROM quizzes WHERE quiz_id=(SELECT max(quiz_id) FROM quizzes)")
@@ -97,7 +97,7 @@ def quizadd():
                 q_date = '"' + datetime.datetime.strptime(q_date, '%Y-%m-%d').strftime('%B %d,%Y') + '"'
                 q_date = q_date
                 print('quiz_id {}, subject {}, q_amt {} q_date {}'.format(quiz_id, subject, q_amt, q_date))
-                con = sqlite3.connect('hw13.db')
+                con = sqlite3.connect('main.db')
                 con.row_factory = sqlite3.Row
                 cur = con.cursor()
                 cur.execute(
@@ -119,7 +119,7 @@ def quizadd():
 def studentidpass(studentid=None):
     print(studentid)
     error = 'Error, user not found'
-    con = sqlite3.connect('hw13.db')
+    con = sqlite3.connect('main.db')
     con.row_factory = sqlite3.Row
     cur = con.cursor()
     cur.execute(
@@ -134,10 +134,16 @@ def studentidpass(studentid=None):
 if __name__ == '__main__':
     app.run(debug=True)
 
-# export FLASK_APP=hello.py
+# \/\/\/ Linux
+# export FLASK_APP=main.py
+# export FLASK_ENV=development
 # flask run
-# https://realpython.com/the-model-view-controller-mvc-paradigm-summarized-with-legos/
-# http: // opentechschool.github.io / python - flask / core / files - templates.html
+# \/\/\/ Windows
+# set FLASK_APP=main.py
+# set FLASK_ENV=development
+# python -m flask run
+#
+#
 
 """def logfile_start():
     file_handler = FileHandler(os.getcwd() + "/log.txt")
