@@ -8,14 +8,32 @@ import datetime
 app = Flask(__name__)
 
 
+def sql_query_connection(sqlstr):
+    try:
+        con = sqlite3.connect('main.db')
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        print(sqlstr)
+        cur.execute(sqlstr)
+        con.commit()
+        return cur.fetchall()
+    except:
+        print('an error has occurred')
+        # TODO if time institute a logger here
+    return None
+
+
 @app.route('/', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'password':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('dashboard'))
+        username = "'" + request.form['username'] + "'"
+        password = "'" + request.form['password'] + "'"
+
+        print(request.form['username'])
+        print(request.form['password'])
+        sqlstr = "SELECT * FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
+        print(sql_query_connection(sqlstr))
     return render_template('login.html', error=error)
 
 

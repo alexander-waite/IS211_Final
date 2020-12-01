@@ -28,3 +28,5 @@ CREATE TABLE workorder(
   FOREIGN KEY (part_id)
   	REFERENCES part (part_id)
 );
+
+INSERT INTO tech VALUES (1,'abc123','root')
