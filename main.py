@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, g, session
+from markupsafe import escape
 import logging
 from logging import FileHandler
 import os
@@ -6,18 +7,15 @@ import sqlite3
 import datetime
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 def sql_query_connection(sqlstr):
     try:
-        con = sqlite3.connect('main.db')
-        con.row_factory = sqlite3.Row
-        cur = con.cursor()
-        print(sqlstr)
-        cur.execute(sqlstr)
-        con.commit()
-        ret = cur.fetchall()
-        if ret is None:
+        conn = sqlite3.connect('main.db')
+        cursor = conn.execute(sqlstr)
+        ret = cursor.fetchall()
+        if len(ret) == 0:
             print('None value has been returned')
             # TODO if time institute a logger here
             return ret
@@ -32,23 +30,26 @@ def sql_query_connection(sqlstr):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
+    if request.method == 'GET':
+        return render_template('login.html', error=error)
     if request.method == 'POST':
         username = "'" + request.form['username'] + "'"
         password = "'" + request.form['password'] + "'"
         sqlstr = "SELECT * FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
         a = sql_query_connection(sqlstr)
-        for aa in a:
-            print(a)
-    return render_template('login.html', error=error)
+        # Todo: better if statement
+        if len(a) < 3:
+            return render_template('login.html', error='Invalid Username or Password, please try again!')
+        else:
+            session['username'] = request.form['username']
+            return redirect(url_for('index'))
 
 
 @app.route('/', methods=['GET'])
 def index():
-    if request.method == 'GET':
-        if 'userid' not in session:
-            return render_template("login.html")
-        else:
-            return render_template("dashboard.html")
+    if 'username' in session:
+        return 'Logged in as %s' % escape(session['username'])
+    return redirect(url_for('login'))
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
