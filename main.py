@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, g
+from flask import Flask, render_template, request, redirect, url_for, g, session
 import logging
 from logging import FileHandler
 import os
@@ -16,38 +16,39 @@ def sql_query_connection(sqlstr):
         print(sqlstr)
         cur.execute(sqlstr)
         con.commit()
-        return cur.fetchall()
+        ret = cur.fetchall()
+        if ret is None:
+            print('None value has been returned')
+            # TODO if time institute a logger here
+            return ret
+        else:
+            return ret
     except:
         print('an error has occurred')
         # TODO if time institute a logger here
     return None
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
         username = "'" + request.form['username'] + "'"
         password = "'" + request.form['password'] + "'"
-
-        print(request.form['username'])
-        print(request.form['password'])
         sqlstr = "SELECT * FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
-        print(sql_query_connection(sqlstr))
+        a = sql_query_connection(sqlstr)
+        for aa in a:
+            print(a)
     return render_template('login.html', error=error)
 
 
-"""@app.route('/')
-def indexpage():
-    con = sqlite3.connect('main.db')
-    con.row_factory = sqlite3.Row
-
-    cur = con.cursor()
-    execute_statement = "select * from student"
-    cur.execute(execute_statement)
-
-    rows = cur.fetchall()
-    return render_template("index2.html", rows=rows)"""
+@app.route('/', methods=['GET'])
+def index():
+    if request.method == 'GET':
+        if 'userid' not in session:
+            return render_template("login.html")
+        else:
+            return render_template("dashboard.html")
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
