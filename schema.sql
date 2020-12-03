@@ -29,4 +29,5 @@ CREATE TABLE workorder(
   	REFERENCES part (part_id)
 );
 
-INSERT INTO tech VALUES (1,'abc123','root')
+INSERT INTO tech VALUES (1,'abc123','root');
+INSERT INTO tech VALUES (1,'abc123','user')

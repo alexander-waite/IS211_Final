@@ -12,42 +12,10 @@ div {
    <body>
    <div>
       <p>
-      <table border = 1>
-         <thead>
-            <td>student id</td>
-            <td>first name</td>
-            <td>last name</td>
-         </thead>
-
-         {% for row in rows %}
-            <tr>
-               <td><a href="{{ url_for('student', id=row['student_id'] )}}">{{row["student_id"]}}</a></td>
-               <td>{{row["student_first_name"]}}</td>
-               <td>{{ row["student_last_name"]}}</td>
-            </tr>
-         {% endfor %}
-      </table>
-      </p>
-      <table border = 1>
-         <thead>
-          <td>quiz id</td>
-          <td>quiz subject</td>
-          <td>quiz question amount</td>
-          <td>quiz date</td>
-         </thead>
-                  {% for row in rows2 %}
-            <tr>
-               <td>{{row["quiz_id"]}}</td>
-               <td>{{row["quiz_subject"]}}</td>
-               <td> {{ row["quiz_question_amount"]}}</td>
-               <td> {{ row["quiz_date"]}}</td>
-            </tr>
-         {% endfor %}
-      </table>
-      <p>
-         <a href="./student/add">Add Student Page</a><br />
-         <a href="./quiz/add">Add Quiz Page</a><br />
-          <a href = "/">Go back to home page</a>
+      Welcome {{session_user}}
+         <a href="./workorder/add">New Work Order</a><br />
+         <a href="./workorder/edit">Edit / Close Existing Work Order</a><br />
+          <a href = "./parts">Check Inventory</a>
       </p>
 
 

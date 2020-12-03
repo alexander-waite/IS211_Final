@@ -35,21 +35,25 @@ def login():
     if request.method == 'POST':
         username = "'" + request.form['username'] + "'"
         password = "'" + request.form['password'] + "'"
-        sqlstr = "SELECT * FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
-        a = sql_query_connection(sqlstr)
+        # TODO : perhaps a more secure string
+        sqlstr = "SELECT tech_id, tech_name FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
+        sqlreturn = sql_query_connection(sqlstr)
         # Todo: better if statement
-        if len(a) < 3:
+        if len(sqlreturn) == 0:
             return render_template('login.html', error='Invalid Username or Password, please try again!')
         else:
-            session['username'] = request.form['username']
+            session['uid'] = sqlreturn[0][0]
+            session['username'] = sqlreturn[0][1]
             return redirect(url_for('index'))
 
 
 @app.route('/', methods=['GET'])
 def index():
-    if 'username' in session:
-        return 'Logged in as %s' % escape(session['username'])
-    return redirect(url_for('login'))
+    print(session)
+    if session['username'] == 'root':
+        return render_template("dashboard.html", session_user=session['username'])
+    else:
+        return render_template("dashboard.html", session_user=session['username'])
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
@@ -93,11 +97,11 @@ def add():
                 return redirect('/dashboard')
             except:
                 error = 'Invalid Name. Please try again.'
-                return render_template('studentadd.html', error=error)
+                return render_template('OLDstudentadd.html', error=error)
         else:
             return redirect(url_for('dashboard'))
     else:
-        return render_template("studentadd.html")
+        return render_template("OLDstudentadd.html")
 
 
 @app.route('/quiz/add', methods=['GET', 'POST'])
@@ -128,11 +132,11 @@ def quizadd():
                 return redirect('/dashboard')
             except:
                 error = 'Invalid Name. Please try again.'
-                return render_template('quizadd.html', error=error)
+                return render_template('OLDquizadd.html', error=error)
         else:
             return redirect(url_for('dashboard'))
     else:
-        return render_template("quizadd.html")
+        return render_template("OLDquizadd.html")
 
 
 @app.route('/student/<studentid>', methods=['GET', 'POST'])
@@ -148,7 +152,7 @@ def studentidpass(studentid=None):
     rowscur = cur.fetchall()
     con.close()
 
-    return render_template("studentsearch.html", rows=rowscur, error=error)
+    return render_template("OLDstudentsearch.html", rows=rowscur, error=error)
 
 
 if __name__ == '__main__':
@@ -163,7 +167,8 @@ if __name__ == '__main__':
 # set FLASK_ENV=development
 # python -m flask run
 #
-#
+# root abc123
+# bob technician abc123
 
 """def logfile_start():
     file_handler = FileHandler(os.getcwd() + "/log.txt")
