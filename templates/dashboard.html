@@ -1,5 +1,8 @@
 <!doctype html>
 <html>
+<head>
+   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
   <style>
 div {
   width: 320px;
@@ -13,9 +16,12 @@ div {
    <div>
       <p>
       Welcome {{session_user}}
+         {#TODO : Need to add catchy buttons#}
+         <br />
          <a href="./workorder/add">New Work Order</a><br />
          <a href="./workorder/edit">Edit / Close Existing Work Order</a><br />
-          <a href = "./parts">Check Inventory</a>
+          <a href = "./parts">Check Inventory</a><br />
+         <a href = "./logout">Log Off</a>
       </p>
 
 

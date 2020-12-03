@@ -27,6 +27,16 @@ def sql_query_connection(sqlstr):
     return None
 
 
+@app.route('/', methods=['GET'])
+def index():
+    if len(session) == 0:
+        return redirect(url_for('login'))
+    elif session['username'] == 'root':
+        return render_template("dashboard.html", session_user=session['username'])
+    else:
+        return render_template("dashboard.html", session_user=session['username'])
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -36,7 +46,8 @@ def login():
         username = "'" + request.form['username'] + "'"
         password = "'" + request.form['password'] + "'"
         # TODO : perhaps a more secure string
-        sqlstr = "SELECT tech_id, tech_name FROM tech WHERE tech_name = {} AND tech_password = {}".format(username, password)
+        sqlstr = "SELECT tech_id, tech_name FROM tech WHERE tech_name = {} AND tech_password = {}".format(username,
+                                                                                                          password)
         sqlreturn = sql_query_connection(sqlstr)
         # Todo: better if statement
         if len(sqlreturn) == 0:
@@ -47,31 +58,32 @@ def login():
             return redirect(url_for('index'))
 
 
-@app.route('/', methods=['GET'])
-def index():
-    print(session)
-    if session['username'] == 'root':
-        return render_template("dashboard.html", session_user=session['username'])
-    else:
-        return render_template("dashboard.html", session_user=session['username'])
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.clear()
+    return 'you have been logged out'
 
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    con = sqlite3.connect('main.db')
-    con.row_factory = sqlite3.Row
-    cur = con.cursor()
-    cur.execute("select student.student_id, student.student_first_name, student.student_last_name from student")
-    con.commit()
-    rows = cur.fetchall()
-    cur.execute(
-        "select quizzes.quiz_id, quizzes.quiz_subject, quizzes.quiz_question_amount, quizzes.quiz_date from quizzes")
-    con.commit()
-    rows2 = cur.fetchall()
-    con.close()
-    return render_template("dashboard.html", rows=rows, rows2=rows2)
+    return render_template("dashboard.html")
 
 
+@app.route('/workorder/add', methods=['GET', 'POST'])
+def workorder_add():
+    pass
+
+
+@app.route('/workorder/edit', methods=['GET', 'POST'])
+def workorder_edit():
+    pass
+
+
+@app.route('/parts', methods=['GET', 'POST'])
+def parts():
+    pass
+
+"""
 @app.route('/student/add', methods=['GET', 'POST'])
 def add():
     con = sqlite3.connect('main.db')
@@ -153,7 +165,7 @@ def studentidpass(studentid=None):
     con.close()
 
     return render_template("OLDstudentsearch.html", rows=rowscur, error=error)
-
+"""
 
 if __name__ == '__main__':
     app.run(debug=True)
