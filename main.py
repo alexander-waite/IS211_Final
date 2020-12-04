@@ -73,12 +73,29 @@ def dashboard():
 def workorder_add():
     if request.method == 'POST':
         req = request.form
+        print(req)
         if req["location"] is '' or req["problem"] is '':
             print('Invalid blank item, please try again')
+            return render_template('workorder.html', error='Invalid blank item, please try again.')
         else:
-            sqlstr = 'Select * FROM machine WHERE machine_location = {}'.format(req["location"])
+            pass
+        sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format("'"+req["location"]+"'")
+        sqlreturn = sql_query_connection(sqlstr)
+        if len(sqlreturn) is 0:
+            print('Game does not exist, Please try again')
+            return render_template('workorder.html', error='Game does not exist, Please try again.')
+        else:
+            pass
+        if req["part_needed_text"] is not '':
+            sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + req["part_needed_text"] + "'")
             sqlreturn = sql_query_connection(sqlstr)
-            print(req)
+            if len(sqlreturn) is None:
+                return render_template('workorder.html', error='Invalid part number, Please try again.')
+            else:
+                pass
+            sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + req["part_needed_text"] + "'")
+            sqlreturn = sql_query_connection(sqlstr)
+            return render_template('workorder.html', success='Successful workorder creation!')
     return render_template("workorder.html")
 
 

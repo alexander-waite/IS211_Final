@@ -5,11 +5,10 @@ CREATE TABLE part(
 );
 
 CREATE TABLE machine(
-  machine_id INT PRIMARY KEY NOT NULL,
-  machine_location TEXT NOT NULL,
-  machine_theme INT NOT NULL,
-  machine_active INT
-);
+	machine_location text PRIMARY KEY,
+   	machine_theme text,
+	machine_active int DEFAULT 1
+  );
 
 CREATE TABLE tech(
   tech_id INT PRIMARY KEY NOT NULL,
@@ -31,3 +30,11 @@ CREATE TABLE workorder(
 
 INSERT INTO tech VALUES (1,'abc123','root');
 INSERT INTO tech VALUES (1,'abc123','user')
+
+INSERT INTO machine VALUES ("A15-02", "Golden Bananas",1);
+INSERT INTO machine VALUES ("B12-09", "Bees!",0);
+
+INSERT INTO part VALUES (1234, "Bill Validator",0);
+INSERT INTO part VALUES (56789, "Win Switch",0);
+
+
