@@ -10,7 +10,7 @@ app = Flask(__name__)
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
-def sql_query_connection(sqlstr):
+def sql_query_connection_select(sqlstr):
     try:
         conn = sqlite3.connect('main.db')
         cursor = conn.execute(sqlstr)
@@ -21,6 +21,20 @@ def sql_query_connection(sqlstr):
             return ret
         else:
             return ret
+    except:
+        print('an error has occurred')
+        # TODO if time institute a logger here
+    return None
+
+
+def sql_query_connection_insert(sqlstr):
+    try:
+        conn = sqlite3.connect('main.db')
+        conn.row_factory = sqlite3.Row
+        cur = conn.cursor()
+        cur.execute(sqlstr)
+        conn.commit()
+        conn.close()
     except:
         print('an error has occurred')
         # TODO if time institute a logger here
@@ -48,7 +62,7 @@ def login():
         # TODO : perhaps a more secure string
         sqlstr = "SELECT tech_id, tech_name FROM tech WHERE tech_name = {} AND tech_password = {}".format(username,
                                                                                                           password)
-        sqlreturn = sql_query_connection(sqlstr)
+        sqlreturn = sql_query_connection_select(sqlstr)
         # Todo: better if statement
         if len(sqlreturn) == 0:
             return render_template('login.html', error='Invalid Username or Password, please try again!')
@@ -73,14 +87,13 @@ def dashboard():
 def workorder_add():
     if request.method == 'POST':
         req = request.form
-        print(req)
         if req["location"] is '' or req["problem"] is '':
             print('Invalid blank item, please try again')
             return render_template('workorder.html', error='Invalid blank item, please try again.')
         else:
             pass
-        sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format("'"+req["location"]+"'")
-        sqlreturn = sql_query_connection(sqlstr)
+        sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format("'" + req["location"] + "'")
+        sqlreturn = sql_query_connection_select(sqlstr)
         if len(sqlreturn) is 0:
             print('Game does not exist, Please try again')
             return render_template('workorder.html', error='Game does not exist, Please try again.')
@@ -88,14 +101,27 @@ def workorder_add():
             pass
         if req["part_needed_text"] is not '':
             sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + req["part_needed_text"] + "'")
-            sqlreturn = sql_query_connection(sqlstr)
+            sqlreturn = sql_query_connection_select(sqlstr)
             if len(sqlreturn) is None:
                 return render_template('workorder.html', error='Invalid part number, Please try again.')
             else:
                 pass
-            sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + req["part_needed_text"] + "'")
-            sqlreturn = sql_query_connection(sqlstr)
-            return render_template('workorder.html', success='Successful workorder creation!')
+        sqlstr = "SELECT workorder_id FROM workorder WHERE workorder_id=(SELECT max(workorder_id) FROM workorder)"
+        int_workorder_id = sql_query_connection_select(sqlstr)[0][0]
+        sqlstr = "INSERT INTO workorder(workorder_id,workorder_description,machine_location,part_id) VALUES({}, " \
+                 "{}, {}, {})".format(
+                    int_workorder_id + 1,
+                    "'" + req["problem"] + "'",
+                    "'" + req["location"] + "'",
+                    "'" + req["part_needed_text"] + "'")
+        sql_query_connection_insert(sqlstr)
+        try:
+            sqlstr = "SELECT workorder_id FROM workorder WHERE workorder_id=(SELECT max(workorder_id) FROM workorder)"
+            int_workorder_id = sql_query_connection_select(sqlstr)[0][0]
+            successmsg = 'Successful workorder creation! Workorder ID {} created!'.format(int_workorder_id)
+            return render_template('workorder.html', success=successmsg)
+        except:
+            print('an error has occurred')
     return render_template("workorder.html")
 
 
@@ -132,6 +158,7 @@ def add():
                         sid, sfn, sln))
                 con.commit()
                 con.close()
+                return redirect('/dashboard')
                 return redirect('/dashboard')
             except:
                 error = 'Invalid Name. Please try again.'
