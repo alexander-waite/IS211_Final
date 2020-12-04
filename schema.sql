@@ -37,4 +37,4 @@ INSERT INTO machine VALUES ("B12-09", "Bees!",0);
 INSERT INTO part VALUES (1234, "Bill Validator",0);
 INSERT INTO part VALUES (56789, "Win Switch",0);
 
-
+INSERT INTO workorder(workorder_id,workorder_description,machine_id,part_id) VALUES (1,"description","A15-02",1234);
