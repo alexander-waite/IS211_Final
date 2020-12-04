@@ -1,10 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
     <meta charset="UTF-8">
     <title>Workorder Editor</title>
 </head>
 <body>
+<div id="leftbox">
+<div id="workorderbox">
+    <h2 style="text-align: center;">New Work Order</h2>
+        <p>
+            <form action = "/workorder/add" method = "post">
+        <label for="location">Location:
+            <span class="tooltip">
+            <input type="text" name="location" id="location" placeholder="Example - A12-05"/>
+            <span class="tooltiptext">Example - A12-05</span>
+            </span>
+        </label><br />
+            <label for="problem">Problem:
+            <span class="tooltip">
+            <input type="text" name="problem" id="problem" placeholder="Example - Broke Bill Validator" size="50"/>
+            <span class="tooltiptext">Example - Broke Bill Validator</span>
+            </span>
+        </label>
+            <br/>
+        <label for="part_needed_check" class="partbox">Is Part Needed?
+                <input type="checkbox" name="part_needed_check" id="part_needed_check"/>
+                <input type="text" name="part_needed_text" id = part_needed_text placeholder="Put part number here Example - 1234"
+                       size="40%"/>
+        </label>
+        <br />
+            <div class="bottom_button">
+            <input type="submit" value="Submit">
+             <input type="reset" value="Clear">
+            </div>
+    </form>
+    </div>
 
+</div>
 </body>
 </html>

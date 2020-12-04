@@ -71,7 +71,15 @@ def dashboard():
 
 @app.route('/workorder/add', methods=['GET', 'POST'])
 def workorder_add():
-    pass
+    if request.method == 'POST':
+        req = request.form
+        if req["location"] is '' or req["problem"] is '':
+            print('Invalid blank item, please try again')
+        else:
+            sqlstr = 'Select * FROM machine WHERE machine_location = {}'.format(req["location"])
+            sqlreturn = sql_query_connection(sqlstr)
+            print(req)
+    return render_template("workorder.html")
 
 
 @app.route('/workorder/edit', methods=['GET', 'POST'])
@@ -82,6 +90,7 @@ def workorder_edit():
 @app.route('/parts', methods=['GET', 'POST'])
 def parts():
     pass
+
 
 """
 @app.route('/student/add', methods=['GET', 'POST'])
