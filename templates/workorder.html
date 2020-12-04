@@ -7,37 +7,80 @@
 </head>
 <body>
 <div id="leftbox">
-<div id="workorderbox">
-    <h2 style="text-align: center;">New Work Order</h2>
-        <p>
-            <form action = "/workorder/add" method = "post">
-        <label for="location">Location:
-            <input type="text" name="location" id="location" placeholder="Example - A15-02"/>
-        </label><br />
-            <label for="problem">Problem:
-            <input type="text" name="problem" id="problem" placeholder="Example - Broke Bill Validator" size="35"/>
-        </label>
-            <br/>
-        <label for="part_needed_check" class="partbox">Is Part Needed?
-                <input type="checkbox" name="part_needed_check" id="part_needed_check"/>
-                <input type="text" name="part_needed_text" id = part_needed_text placeholder="Put part number here Example - 1234"
-                       size="35%"/>
-        </label>
-        <br />
-            <div class="bottom_button">
-            <input type="submit" value="Submit">
-             <input type="reset" value="Clear">
-            </div>
-    </form>
-        {% if error %}
-        <p class="error"><strong>Error: {{ error }}</strong>
-      {% endif %}
+        {% if neworder == True%}
+    <div id="workorderbox">
+        <h2 style="text-align: center;">New Work Order</h2>
+            <p>
+                <form action = "/workorder/add" method = "post">
+            <label for="location">Location:
+                <input type="text" autocomplete = "off" name="location" id="location" placeholder="Example - A15-02"/>
+            </label><br />
+                <label for="problem">Problem:
+                <input type="text" autocomplete = "off" name="problem" id="problem" placeholder="Example - Broke Bill Validator" size="35"/>
+            </label>
+                <br/>
+            <label for="part_needed_check" class="partbox">Is Part Needed?
+                    <input type="checkbox" name="part_needed_check" id="part_needed_check"/>
+                    <input type="text" autocomplete = "off" name="part_needed_text" id = part_needed_text placeholder="Put part number here Example - 1234"
+                           size="35%"/>
+            </label>
+            <br />
+                <div class="bottom_button">
+                <input type="submit" value="Submit">
+                 <input type="reset" value="Clear">
+                    <input type="submit" name="Return" value="Return">
+                </div>
+        </form>
+            {% if error %}
+            <p class="error"><strong>Error: {{ error }}</strong>
+          {% endif %}
 
-            {% if success %}
-        <p class="success"><strong> {{ success }}</strong>
-      {% endif %}
+                {% if success %}
+            <p class="success"><strong> {{ success }}</strong>
+          {% endif %}
+        </div>
+        {% endif%}
+    {% if editorder == True%}
+    <div id ="editorderbox"  class ="lookup">
+        {% if lookuporder == True%}
+         <h2 style="text-align: center;">Lookup Work Order</h2>
+            <form action = "/workorder/edit" method = "post">
+                <p>
+                    <label for="WorkorderID">Workorder ID:
+                        <input type="text" autocomplete = "off" name="WorkorderID" id="WorkorderID" placeholder="1"/>
+                     </label>
+                    {% if error %}
+                        <p class="error"><strong>Error: {{ error }}</strong>
+                    {% endif %}
+            </form>
+        {%endif%}
+        {% if amendorder == True%}
+            <div id="modifyorderbox">
+                    <h2 style="text-align: center;">Modify Work Order</h2>
+                        <p>
+                            <form action = "/workorder/edit/" method = "post">
+                        <label for="location">Location:
+                            <input type="text" autocomplete = "off" name="location" id="mod_location" value={{session['sqlreturndict']['machine_location']}}>
+                        </label><br />
+                            <label for="problem">Problem:
+                            <input type="text" autocomplete = "off" name="problem" id="mod_problem" value={{session['sqlreturndict']['workorder_description']}} />
+                        </label>
+                            <br/>
+                {%if partadded == True%}
+                        <label for="part_needed_check">Part:
+                                <input type="text" autocomplete = "off" name="part_needed_text" id = mod_part_needed_text value={{session['sqlreturndict']['part_id']}}>
+                        </label>
+                        <br />
+                {%endif%}
+                            <div class="bottom_button">
+                            <input type="submit" value="Submit">
+                             <input type="reset" value="Reset">
+                                <input type="submit" name="Return" value="Return">
+                            </div>
+                    </form>
+        {%endif%}
     </div>
-
+    {%endif%}
 </div>
 </body>
 </html>

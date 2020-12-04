@@ -24,12 +24,17 @@ p.success{
 color:green
 }
 
+.lookup{
+text-align: center;
+}
+
+
 #leftbox{
   position:relative;
   margin: 5px ;
   width: 25%;
   padding: 15px;
-  float:left;
+  margin: auto;
 
    /* border-radius */
   -webkit-border-radius: 5px;
@@ -42,6 +47,17 @@ color:green
 }
 
 #workorderbox{
+  position:relative;
+    height: 300px;
+    text-align:leftbox;
+}
+
+#modifyorderbox{
+  position:relative;
+    height: 300px;
+}
+
+#editorderbox{
   position:relative;
     height: 300px;
 }

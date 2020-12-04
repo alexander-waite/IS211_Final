@@ -17,7 +17,7 @@ CREATE TABLE tech(
 );
 
 
-cREATE TABLE workorder(
+CREATE TABLE workorder(
 workorder_id INT PRIMARY KEY,
 workorder_description TEXT NOT NULL,
 machine_location INT,

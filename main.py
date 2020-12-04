@@ -86,48 +86,76 @@ def dashboard():
 @app.route('/workorder/add', methods=['GET', 'POST'])
 def workorder_add():
     if request.method == 'POST':
+        if request.form['Return'] == 'Return':
+            return redirect(url_for('index'))
         req = request.form
         if req["location"] is '' or req["problem"] is '':
             print('Invalid blank item, please try again')
-            return render_template('workorder.html', error='Invalid blank item, please try again.')
+            return render_template("workorder.html", neworder=True, editorder=False,
+                                   error='Invalid blank item, please try again.')
         else:
             pass
         sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format("'" + req["location"] + "'")
         sqlreturn = sql_query_connection_select(sqlstr)
         if len(sqlreturn) is 0:
             print('Game does not exist, Please try again')
-            return render_template('workorder.html', error='Game does not exist, Please try again.')
+            return render_template("workorder.html", neworder=True, editorder=False,
+                                   error='Game does not exist, Please try again.')
         else:
             pass
         if req["part_needed_text"] is not '':
             sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + req["part_needed_text"] + "'")
             sqlreturn = sql_query_connection_select(sqlstr)
             if len(sqlreturn) is None:
-                return render_template('workorder.html', error='Invalid part number, Please try again.')
+                return render_template("workorder.html", neworder=True, editorder=False,
+                                       error='Invalid part number, Please try again.')
             else:
                 pass
         sqlstr = "SELECT workorder_id FROM workorder WHERE workorder_id=(SELECT max(workorder_id) FROM workorder)"
         int_workorder_id = sql_query_connection_select(sqlstr)[0][0]
         sqlstr = "INSERT INTO workorder(workorder_id,workorder_description,machine_location,part_id) VALUES({}, " \
                  "{}, {}, {})".format(
-                    int_workorder_id + 1,
-                    "'" + req["problem"] + "'",
-                    "'" + req["location"] + "'",
-                    "'" + req["part_needed_text"] + "'")
+            int_workorder_id + 1,
+            "'" + req["problem"] + "'",
+            "'" + req["location"] + "'",
+            "'" + req["part_needed_text"] + "'")
         sql_query_connection_insert(sqlstr)
         try:
             sqlstr = "SELECT workorder_id FROM workorder WHERE workorder_id=(SELECT max(workorder_id) FROM workorder)"
             int_workorder_id = sql_query_connection_select(sqlstr)[0][0]
             successmsg = 'Successful workorder creation! Workorder ID {} created!'.format(int_workorder_id)
-            return render_template('workorder.html', success=successmsg)
+            return render_template("workorder.html", neworder=True, editorder=False, success=successmsg)
         except:
             print('an error has occurred')
-    return render_template("workorder.html")
+    return render_template("workorder.html", neworder=True, editorder=False)
 
 
 @app.route('/workorder/edit', methods=['GET', 'POST'])
-def workorder_edit():
-    pass
+def workorder_lookup():
+    if request.method == 'POST':
+        req = request.form
+        sqlstr = 'SELECT * FROM workorder WHERE workorder_id = {}'.format("'" + req["WorkorderID"] + "'")
+        sqlreturn = sql_query_connection_select(sqlstr)
+        if len(sqlreturn) is 0:
+            # TODO: logger
+            print('Workorder ID does not exist, try again.')
+            return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True,
+                                   error='Workorder ID does not exist, try again.')
+        else:
+            keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id', 'status')
+            session['sqlreturndict'] = dict(zip(keys, sqlreturn[0]))
+            print(session['sqlreturndict'])
+            return redirect(url_for('workorder_edit', workorderid=session['sqlreturndict']['workorder_id']))
+    return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True)
+
+
+@app.route('/workorder/edit/<workorderid>', methods=['GET', 'POST'])
+def workorder_edit(workorderid):
+    if session['sqlreturndict']['part_id'] == '':
+        return render_template("workorder.html", editorder=True, amendorder=True)
+    else:
+        return render_template("workorder.html", editorder=True, amendorder=True, partadded=True)
+
 
 
 @app.route('/parts', methods=['GET', 'POST'])
