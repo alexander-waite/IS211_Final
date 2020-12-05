@@ -46,6 +46,11 @@ text-align: center;
   box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
 }
 
+.normalbox{
+  position:relative;
+    height: 300px;
+}}
+
 #workorderbox{
   position:relative;
     height: 300px;
@@ -72,6 +77,11 @@ label {
 div.bottom_button {
   position: absolute;
   width: 50%;
+  bottom: 10px;
+
+}
+
+div.bottom_button_edit {
   bottom: 10px;
 
 }

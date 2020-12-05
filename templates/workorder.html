@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
     <meta charset="UTF-8">
-    <title>Workorder Editor</title>
+    <title>Workorder Creator</title>
 </head>
 <body>
 <div id="leftbox">
@@ -72,10 +72,11 @@
                         </label>
                         <br />
                 {%endif%}
-                            <div class="bottom_button">
+                            <div class="bottom_button_edit">
                             <input type="submit" value="Submit">
-                             <input type="reset" value="Reset">
-                                <input type="submit" name="Return" value="Return">
+                            <input type="submit" value="Delete">
+                            <input type="reset" value="Reset">
+                            <input type="submit" name="return2" value="return2">
                             </div>
                     </form>
         {%endif%}

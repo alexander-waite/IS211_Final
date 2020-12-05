@@ -144,18 +144,42 @@ def workorder_lookup():
         else:
             keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id', 'status')
             session['sqlreturndict'] = dict(zip(keys, sqlreturn[0]))
-            print(session['sqlreturndict'])
             return redirect(url_for('workorder_edit', workorderid=session['sqlreturndict']['workorder_id']))
     return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True)
 
 
 @app.route('/workorder/edit/<workorderid>', methods=['GET', 'POST'])
 def workorder_edit(workorderid):
+    print(request.form)
+    if request.method == 'POST':
+        if request.form.get("Return", False):
+            return redirect(url_for('index'))
+        else:
+            pass
+        if request.form.get('Close Order', False):
+            return redirect(url_for('editworkorder.html', closeorder=True))
+        else:
+            return 'smoke smoke weed everyday'
+        if request.form.get('Submit', False):
+            pass
+        else:
+            return 'smoke smoke weed everyday'
     if session['sqlreturndict']['part_id'] == '':
-        return render_template("workorder.html", editorder=True, amendorder=True)
+        return render_template("editworkorder.html", closeorder=False)
     else:
-        return render_template("workorder.html", editorder=True, amendorder=True, partadded=True)
+        return render_template("editworkorder.html", partadded=True , closeorder=False)
 
+
+@app.route('/workorder/closeorder/<workorderid>', methods=['GET', 'POST'])
+def workorder_close(workorderid):
+    if request.method == 'POST':
+        if request.form['Confirm'] == 'True':
+            return redirect(url_for('editworkorder.html', closeorder=True, closed = True))
+    else:
+        if session['sqlreturndict']['part_id'] == '':
+            return render_template("editworkorder.html")
+        else:
+            return render_template("editworkorder.html", partadded=True)
 
 
 @app.route('/parts', methods=['GET', 'POST'])
