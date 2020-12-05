@@ -7,6 +7,7 @@ import sqlite3
 import datetime
 
 app = Flask(__name__)
+#todo: change random secret key???
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
@@ -279,10 +280,9 @@ def workorder_confirm_edit(workorderid):
             return render_template("workorder_final_edit.html", partadded=True,confirmedit=True,workorderid=workorderid)
 
 
-@app.route('/parts', methods=['GET', 'POST'])
-def parts():
+@app.route('/root', methods=['GET', 'POST'])
+def root_add():
     pass
-
 
 
 
