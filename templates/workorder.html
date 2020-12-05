@@ -11,18 +11,17 @@
     <div id="workorderbox">
         <h2 style="text-align: center;">New Work Order</h2>
             <p>
-                <form action = "/workorder/add" method = "post">
+                <form action = "/workorder/add" method = "POST">
             <label for="location">Location:
-                <input type="text" autocomplete = "off" name="location" id="location" placeholder="Example - A15-02"/>
+                <input type="text" autocomplete = "off" name="location" id="location" placeholder="Example - A15-02" class="workordertextbar"/>
             </label><br />
                 <label for="problem">Problem:
-                <input type="text" autocomplete = "off" name="problem" id="problem" placeholder="Example - Broke Bill Validator" size="35"/>
+                <input type="text" autocomplete = "off" name="problem" id="problem" placeholder="Example - Broke Bill Validator" class="workordertextbar" />
             </label>
                 <br/>
             <label for="part_needed_check" class="partbox">Is Part Needed?
                     <input type="checkbox" name="part_needed_check" id="part_needed_check"/>
-                    <input type="text" autocomplete = "off" name="part_needed_text" id = part_needed_text placeholder="Put part number here Example - 1234"
-                           size="35%"/>
+                    <input type="text" autocomplete = "off" name="part_needed_text" id = part_needed_text placeholder="Put part number here Example - 1234" />
             </label>
             <br />
                 <div class="bottom_button">
@@ -54,7 +53,7 @@
                     {% endif %}
             </form>
         {%endif%}
-        {% if amendorder == True%}
+ <!--       {% if amendorder == True%}
             <div id="modifyorderbox">
                     <h2 style="text-align: center;">Modify Work Order</h2>
                         <p>
@@ -81,7 +80,7 @@
                     </form>
         {%endif%}
     </div>
-    {%endif%}
+    {%endif%} -->
 </div>
 </body>
 </html>

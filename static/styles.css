@@ -11,9 +11,12 @@ div {
 
 #part_needed_text{
     display: none;
+    height:2em
 }
  #part_needed_check:checked ~ #part_needed_text{
     display: inline-block;
+    width:25.1em;
+    height:2em
 }
 
 p.error{
@@ -46,8 +49,9 @@ text-align: center;
   box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
 }
 
-#loginbutton {
-    width: 18em;  height: 2em;
+.loginbutton {
+    width: 18em;
+    height: 2em;
 }
 
 #leftbox{
@@ -71,7 +75,7 @@ text-align: center;
 .normalbox{
   position:relative;
     height: 300px;
-}}
+}
 
 #addbox{
   position:absolute;
@@ -81,12 +85,18 @@ text-align: center;
 
 #workorderbox{
   position:relative;
-    height: 400px;
+    height: 200px;
+}
+
+.workordertextbar{
+    width:30em;
+    height:2em
+
 }
 
 #modifyorderbox{
   position:relative;
-    height: 300px;
+    height: 200px;
 }
 
 #editorderbox{
