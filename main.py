@@ -147,12 +147,12 @@ def workorder_lookup():
         else:
             keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id', 'status')
             session['sqlreturndict'] = dict(zip(keys, sqlreturn[0]))
-            return redirect(url_for('workorder_edit', workorderid=session['sqlreturndict']['workorder_id']))
+            return redirect(url_for('workorder_editor', workorderid=session['sqlreturndict']['workorder_id']))
     return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True)
 
 
 @app.route('/workorder/edit/<workorderid>', methods=['GET', 'POST'])
-def workorder_edit(workorderid):
+def workorder_editor(workorderid):
     print(request.form)
     if request.method == 'POST':
         if request.form.get("Return"):
@@ -160,31 +160,43 @@ def workorder_edit(workorderid):
         else:
             pass
         if request.form.get("closeorder"):
-            return redirect(url_for('workorder_close', closeorder=True, workorderid=workorderid))
+            return redirect(url_for('workorder_close', workorderid=workorderid))
         else:
             pass
         if request.form.get('Submit'):
-            #some sql
-            print('cats')
-            return render_template('editworkorder.html', closeorder=False)
+            return redirect(url_for('workorder_confirm_edit', closeorder=False, confirmedit=True,workorderid=workorderid))
         else:
             pass
     if session['sqlreturndict']['part_id'] == '':
-        return render_template("editworkorder.html", closeorder=False)
+        return render_template("workorder_final_edit.html", editorder=True)
     else:
-        return render_template("editworkorder.html", partadded=True , closeorder=False)
+        return render_template("workorder_final_edit.html", partadded=True , editorder=True)
 
 
 @app.route('/workorder/edit/<workorderid>/close', methods=['GET', 'POST'])
 def workorder_close(workorderid):
     if request.method == 'POST':
         if request.form['Confirm'] == 'True':
-            return redirect(url_for('editworkorder.html', closeorder=True, closed = True))
+            return redirect(url_for('workorder_final_edit.html', closeorder=True))
+    else:
+        pass
+    if request.method == 'GET':
+        if session['sqlreturndict']['part_id'] == '':
+            return render_template("workorder_final_edit.html", closeorder=True, workorderid=session['sqlreturndict']['workorder_id'])
+        else:
+            return render_template("workorder_final_edit.html", partadded=True, closeorder=True,workorderid=session['sqlreturndict']['workorder_id'])
+
+
+@app.route('/workorder/edit/<workorderid>/confirm', methods=['GET', 'POST'])
+def workorder_confirm_edit(workorderid):
+    if request.method == 'POST':
+        if request.form['Confirm'] == 'True':
+            return redirect(url_for('workorder_final_edit.html', confirmedit=True,))
     else:
         if session['sqlreturndict']['part_id'] == '':
-            return render_template("editworkorder.html")
+            return render_template("workorder_final_edit.html",confirmedit=True,workorderid=session['sqlreturndict']['workorder_id'])
         else:
-            return render_template("editworkorder.html", partadded=True)
+            return render_template("workorder_final_edit.html", partadded=True,confirmedit=True,workorderid=session['sqlreturndict']['workorder_id'])
 
 
 @app.route('/parts', methods=['GET', 'POST'])

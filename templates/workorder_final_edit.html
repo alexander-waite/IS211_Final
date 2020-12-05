@@ -7,7 +7,7 @@
 </head>
 <body>
     <div id="leftbox">
-        {%if closeorder == False%}
+        {%if editorder == True%}
             <div id="modifyorderbox">
                     <h2 style="text-align: center;">Modify Work Order</h2>
                         <p>
@@ -34,17 +34,32 @@
                     </form>
         {%endif%}
         {%if closeorder == True%}
-                <p>
-                     <form action = "/workorder/edit/<{{workorderid}}>/close" method = "post">
-                        <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
-                        <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
-                        <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
-                        <br />
-                        <strong>If the work is completed then please press submit, otherwise press return</strong>
-                        <input type="submit" name="Submit" value="Submit">
-                        <input type="submit" name="Return" value="Return">
-                </p>
-                {%endif%}
+        <p>
+                <h2>Close Workorder</h2>
+             <form action = "/workorder/edit/<{{'workorderid'}}>/close" method = "post">
+                <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
+                <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
+                <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
+                <br />
+                <strong>If the work is completed then please press submit, otherwise press return</strong>
+                <input type="submit" name="Submit" value="Submit">
+                <input type="submit" name="Return" value="Return">
+        </p>
+        {%endif%}
+
+        {%if confirmedit == True%}
+        <p>
+             <form action = "/workorder/edit/<{{'workorderid'}}>/confirm" method = "post">
+                <h2>Confirm Edit Workorder</h2>
+                <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
+                <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
+                <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
+                <br />
+                <strong>If the work is completed then please press submit, otherwise press return</strong>
+                <input type="submit" name="Submit" value="Submit">
+                <input type="submit" name="Return" value="Return">
+        </p>
+        {%endif%}
                     </form>
                 </div>
             </div>
