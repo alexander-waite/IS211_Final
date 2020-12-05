@@ -30,6 +30,7 @@ text-align: center;
 
 
 #leftbox{
+  height:300px;
   position:relative;
   margin: 5px ;
   width: 25%;
@@ -53,8 +54,7 @@ text-align: center;
 
 #workorderbox{
   position:relative;
-    height: 300px;
-    text-align:leftbox;
+    height: 400px;
 }
 
 #modifyorderbox{
@@ -77,11 +77,15 @@ label {
 div.bottom_button {
   position: absolute;
   width: 50%;
+  height 100px;
   bottom: 10px;
 
 }
 
 div.bottom_button_edit {
+  bottom: 10px;
+   position: absolute;
+  width: 50%;
   bottom: 10px;
 
 }

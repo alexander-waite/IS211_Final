@@ -86,8 +86,11 @@ def dashboard():
 @app.route('/workorder/add', methods=['GET', 'POST'])
 def workorder_add():
     if request.method == 'POST':
-        if request.form['Return'] == 'Return':
+        if request.form.get("Return"):
             return redirect(url_for('index'))
+        else:
+            pass
+    if request.method == 'POST':
         req = request.form
         if req["location"] is '' or req["problem"] is '':
             print('Invalid blank item, please try again')
@@ -152,25 +155,27 @@ def workorder_lookup():
 def workorder_edit(workorderid):
     print(request.form)
     if request.method == 'POST':
-        if request.form.get("Return", False):
+        if request.form.get("Return"):
             return redirect(url_for('index'))
         else:
             pass
-        if request.form.get('Close Order', False):
-            return redirect(url_for('editworkorder.html', closeorder=True))
+        if request.form.get("closeorder"):
+            return redirect(url_for('workorder_close', closeorder=True, workorderid=workorderid))
         else:
-            return 'smoke smoke weed everyday'
-        if request.form.get('Submit', False):
             pass
+        if request.form.get('Submit'):
+            #some sql
+            print('cats')
+            return render_template('editworkorder.html', closeorder=False)
         else:
-            return 'smoke smoke weed everyday'
+            pass
     if session['sqlreturndict']['part_id'] == '':
         return render_template("editworkorder.html", closeorder=False)
     else:
         return render_template("editworkorder.html", partadded=True , closeorder=False)
 
 
-@app.route('/workorder/closeorder/<workorderid>', methods=['GET', 'POST'])
+@app.route('/workorder/edit/<workorderid>/close', methods=['GET', 'POST'])
 def workorder_close(workorderid):
     if request.method == 'POST':
         if request.form['Confirm'] == 'True':
