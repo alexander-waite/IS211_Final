@@ -36,7 +36,7 @@
         {%if closeorder == True%}
         <p>
                 <h2>Close Workorder</h2>
-             <form action = "/workorder/edit/<{{'workorderid'}}>/close" method = "post">
+             <form action = "/workorder/edit/{{workorderid}}/close" method = "post">
                 <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
                 <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
                 <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
@@ -49,7 +49,7 @@
 
         {%if confirmedit == True%}
         <p>
-             <form action = "/workorder/edit/<{{'workorderid'}}>/confirm" method = "post">
+             <form action = "/workorder/edit/<{{workorderid}}>/confirm" method = "post">
                 <h2>Confirm Edit Workorder</h2>
                 <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
                 <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
@@ -60,6 +60,13 @@
                 <input type="submit" name="Return" value="Return">
         </p>
         {%endif%}
+                 {% if error %}
+            <p class="error"><strong>Error: {{ error }}</strong>
+          {% endif %}
+
+                {% if success %}
+            <p class="success"><strong> {{ success }}</strong>
+          {% endif %}
                     </form>
                 </div>
             </div>
