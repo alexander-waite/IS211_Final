@@ -52,7 +52,7 @@
              <form action = "/workorder/edit/<{{workorderid}}>/confirm" method = "post">
                 <h2>Confirm Edit Workorder</h2>
                 <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
-                <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
+                <strong>Order Description : </strong>{{session['sqlreturndict']["workorder_description"]}}<br />
                 <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
                 <br />
                 <strong>If the work is completed then please press submit, otherwise press return</strong>

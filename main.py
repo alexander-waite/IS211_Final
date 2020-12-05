@@ -193,14 +193,15 @@ def workorder_editor(workorderid):
             pass
         if request.form.get('Submit'):
             req = request.form
-            print(req[0]['location'])
+            print(req)
+
             if req["location"] is '' or req["problem"] is '':
                 print('Invalid blank item, please try again')
                 return render_template("workorder.html", neworder=True, editorder=False,
                                        error='Invalid blank item, please try again.')
-            keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id', 'status')
-            values=(workorderid, req[0]['location'])
-            session['sqlreturndict'] = dict(zip(keys, sqlreturn[0]))
+            keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id')
+            values=(workorderid,req['problem'],req['location'],req['part_needed_text'])
+            session['sqlreturndict'] = dict(zip(keys, values))
             return redirect(url_for('workorder_confirm_edit', closeorder=False, confirmedit=True,workorderid=workorderid))
         else:
             pass
@@ -213,15 +214,19 @@ def workorder_editor(workorderid):
 @app.route('/workorder/edit/<workorderid>/close', methods=['GET', 'POST'])
 def workorder_close(workorderid):
     if request.method == 'POST':
-        print(request.form)
         if request.form.get("Submit"):
+            sessioninfo = session['sqlreturndict']
+            sqlstr = "UPDATE workorder SET status = 1 WHERE workorder_id = {}".format("'" + str(sessioninfo['workorder_id']) + "'")
+            sql_query_connection_insert(sqlstr)
+            successmsg = 'Workorder is closed!'
+            return render_template("workorder_final_edit.html", confirmedit=True,
+                                   workorderid=sessioninfo['workorder_id'], success=successmsg)
+        else:
             pass
-    else:
-        pass
-    if request.form.get("Return"):
-        return redirect(url_for('index'))
-    else:
-        pass
+        if request.form.get('Return'):
+            return redirect(url_for('workorder_editor', workorderid=session['sqlreturndict']['workorder_id']))
+        else:
+            pass
     if request.method == 'GET':
         if session['sqlreturndict']['part_id'] == '':
             return render_template("workorder_final_edit.html", closeorder=True,workorderid=workorderid)
@@ -231,43 +236,40 @@ def workorder_close(workorderid):
 
 @app.route('/workorder/edit/<workorderid>/confirm', methods=['GET', 'POST'])
 def workorder_confirm_edit(workorderid):
-    """print(session['sqlreturndict']) print("'" + session['sqlreturndict']['machine_location'] + "'")"""
     if request.method == 'POST':
         if request.form.get('Submit'):
             sessioninfo = session['sqlreturndict']
-
             sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format(
                 "'" + sessioninfo['machine_location'] + "'")
             sqlreturn = sql_query_connection_select(sqlstr)
             if len(sqlreturn) is 0:
                 print('Game does not exist, Please try again')
-                return redirect(url_for('workorder_confirm_edit', closeorder=False, confirmedit=True,
+                return render_template("workorder_final_edit.html", confirmedit=True,
                                         workorderid=sessioninfo['workorder_id'],
-                                        error='Game does not exist, Please try again.'))
+                                        error='Game does not exist, Please try again.')
             else:
                 if sessioninfo['part_id'] is not '':
                     sqlstr = 'SELECT * FROM part WHERE part_id = {}'.format("'" + str(sessioninfo["part_id"]) + "'")
                     sqlreturn = sql_query_connection_select(sqlstr)
-                    if len(sqlreturn) is None:
-                        return redirect(url_for('workorder_confirm_edit', closeorder=False, confirmedit=True,
+                    if len(sqlreturn) == 0:
+                        return render_template("workorder_final_edit.html", confirmedit=True,
                                                 workorderid=sessioninfo['workorder_id'],
-                                                error='Invalid part number, Please try again.'))
+                                                error='Invalid part number, Please try again.')
                     else:
                         sqlstr = "UPDATE workorder SET workorder_description = {}, machine_location = {},part_id = {} WHERE  \
                                  workorder_id = {}".format(
-                            "'" + sessioninfo['workorder_description'] + "'",
+                            "'" + sessioninfo["workorder_description"] + "'",
                             "'" + sessioninfo['machine_location'] + "'",
                             "'" + str(sessioninfo['part_id']) + "'",
                             "'" + str(sessioninfo['workorder_id']) + "'")
                         a = sql_query_connection_insert(sqlstr)
-                        print(a)
                         successmsg = 'Successful workorder edit!'
                         return render_template("workorder_final_edit.html", confirmedit=True,
                                                workorderid=sessioninfo['workorder_id'], success=successmsg)
         else:
             pass
         if request.form.get('Return'):
-            return redirect(url_for('index'))
+            return redirect(url_for('workorder_editor', workorderid=session['sqlreturndict']['workorder_id']))
         else:
             pass
     else:
