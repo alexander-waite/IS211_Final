@@ -28,7 +28,27 @@ color:green
 text-align: center;
 }
 
-#loginbox{}
+#loginbox{
+  height:200px;
+  width: 200px;
+  position:relative;
+  margin: 5px ;
+  padding: 15px;
+  margin: auto;
+
+   /* border-radius */
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  /* box-shadow */
+  -webkit-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  -moz-box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+  box-shadow: rgba(0,0,0,0.2) 0px 1px 3px;
+}
+
+#loginbutton {
+    width: 18em;  height: 2em;
+}
 
 #leftbox{
   height:300px;

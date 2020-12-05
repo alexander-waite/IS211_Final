@@ -4,13 +4,13 @@
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
   </head>
   <body>
-  <div id="leftbox">
-      <h1>Please login</h1>
+  <div id="loginbox">
+      <h1 style="text-align: center">Please login</h1>
       <form action="" method="post">
         <input type="text" placeholder="Username" name="username" value="{{
-          request.form.username }}">
+          request.form.username }}"><br />
          <input type="password" placeholder="Password" name="password" value="{{
-          request.form.password }}"><br />
+          request.form.password }}"><br /><br />
         <input class="btn btn-default" type="submit" value="login">
       </form>
       {% if error %}

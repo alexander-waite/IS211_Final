@@ -16,19 +16,20 @@ div {
    <body>
    <div>
       <p>
-      Welcome {{session_user}}
-         {#TODO : Need to add catchy buttons#}
-         <br />
-         <a href="./workorder/add">New Work Order</a><br />
+         <strong>Welcome {{session_user}}</strong>
+         <form action="./workorder/add"><input type="submit" value="New Work Order" id="loginbutton" /> </form>
+         <form action="./workorder/edit"><input type="submit" value="Edit / Close Existing Work Order" id="loginbutton"/> </form>
+         <form action="./logout"><input type="submit" value="Log Off" id="loginbutton" /> </form>
+        <!--- <a href="./workorder/add">New Work Order</a><br />
          <a href="./workorder/edit">Edit / Close Existing Work Order</a><br />
-         <a href = "./logout">Log Off</a>
+         <a href = "./logout">Log Off</a>-->
       </p>
       {%if session_user == 'root' %}
-      <p>
-         Root menu:
+      <p style="color:darkred;">
+         <strong>Root Menu:</strong>
          <form action = "/root" method = "POST">
-            <input type="Submit" name="New User" value="New User">
-            <input type="Submit" name="New Part" value="New Part">
+            <input type="Submit" name="New User" value="Add New User">
+            <input type="Submit" name="New Part" value="Add New Part">
          </form>
       </p>
       {%endif%}
