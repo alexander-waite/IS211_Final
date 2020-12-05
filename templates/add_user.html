@@ -2,9 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add User</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
-
+<div class="leftbox">
+    <div class="addbox">
+        <form id="{{ url_for('user_add') }}" method="POST">
+            <strong>Tech ID:</strong><input type="text" name="tech_id" autocomplete = "off"><br />
+            <strong>Tech Password:</strong><input type="text" name="tech_password" autocomplete = "off"><br />
+            <strong>Tech Name:</strong><input type="text" name="tech_name" autocomplete = "off"><br />
+            <input type="Submit" name="New User" value="Submit"><br />
+            <input type="Reset" name="New User" value="Reset"><br />
+        </form>
+    </div>
+        {% if error %}
+        <p class="error"><strong>Error: {{ error }}</strong>
+    {% endif %}
+    {% if success %}
+        <p class="success"><strong> {{ success }}</strong>
+    {% endif %}
+</div>
 </body>
 </html>

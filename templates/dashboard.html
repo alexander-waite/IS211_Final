@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
 <head>
+       <meta charset="UTF-8">
+    <title>Dashboard</title>
    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
   <style>
@@ -24,9 +26,9 @@ div {
       {%if session_user == 'root' %}
       <p>
          Root menu:
-         <form action = "/root" method = "post">
-            <input type="Submit" value="New User">
-            <input type="Submit" value="New Part">
+         <form action = "/root" method = "POST">
+            <input type="Submit" name="New User" value="New User">
+            <input type="Submit" name="New Part" value="New Part">
          </form>
       </p>
       {%endif%}
