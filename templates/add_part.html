@@ -6,15 +6,16 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}" />
 </head>
 <body>
-<div class="leftbox">
-    <div class="addbox">
+    <div id="addbox">
         <form action="{{ url_for('part_add') }}" method="POST">
+            <h2>Add New Part</h2>
                 <strong>Part ID:</strong><input type="text" name="part_id" autocomplete = "off"><br />
                 <strong>Part Description:</strong><input type="text" name="part_description" autocomplete = "off"><br />
                 <strong>Part Revision:</strong><input type="text" name="part_revision" autocomplete = "off"><br />
             <input type="Submit" name="New Part" value="Submit"><br />
-            <input type="Reset" name="New Part" value="Reset"><br />
+            <input type="Reset" name="New Part" value="Reset">
         </form>
+        <form action="/"><input type="submit" value="Return"> </form>
     </div>
     {% if error %}
         <p class="error"><strong>Error: {{ error }}</strong>
