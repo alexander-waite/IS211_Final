@@ -1,15 +1,34 @@
-from flask import Flask, render_template, request, redirect, url_for, g, session
-from markupsafe import escape
+from flask import Flask, render_template, request, redirect, url_for, g, session, flash
+import re
 import logging
 from logging import FileHandler
 import os
 import sqlite3
 import datetime
+from flask import send_from_directory
+import csv
+import json
+# the following isn't nessecary except for online applications:
+from werkzeug.utils import secure_filename
+
+UPLOAD_FOLDER = os.getcwd() + '/upload_files/'
+ALLOWED_EXTENSIONS = {'csv'}
 
 app = Flask(__name__)
 # TODO: purge db before submission
 # todo: change random secret key???
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+def removefile():
+    if os.path.isfile(UPLOAD_FOLDER+'upload.csv'):
+        os.remove(UPLOAD_FOLDER+'upload.csv')
+        print('old file removed')
 
 
 def logfile_start():
@@ -121,6 +140,52 @@ def dashboard():
     return render_template("dashboard.html")
 
 
+@app.route("/part/import", methods=['GET', 'POST'])
+def part_import():
+    if request.method == "POST":
+        if 'file' not in request.files:
+            errormsg = "no file attached"
+            return render_template("import_part.html", error=errormsg)
+        file = request.files['file']
+        if file.filename == '':
+            errormsg = "no file attached"
+            return render_template("import_part.html", error=errormsg)
+        if file and allowed_file(file.filename):
+            removefile()
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.csv'))
+            logging.info('file successfully uploaded, upload.csv')
+
+
+            #TODO Convert to JSON
+            #TODO: Parse File
+            #TODO: SQL Sequence
+            csvFilePath = UPLOAD_FOLDER+'upload.csv'
+            jsonFilePath = UPLOAD_FOLDER + 'json_file_name.json'
+            jsondata = {}
+            with open(csvFilePath) as csvFile:
+                csvreader = csv.DictReader(csvFile)
+                for row in csvreader:
+                    print(row)
+                    """json_id = rows['id']
+                    jsondata[json_id] = rows
+
+            with open(jsonFilePath, 'w') as jsonfile:
+                jsonfile.write(json.dumps(jsondata, indent=4))"""
+
+
+            return render_template("import_part.html")
+        else:
+            print('error')
+            errormsg = 'Unacceptable file submitted, file rejected'
+            return render_template("import_part.html", error = errormsg)
+    return render_template("import_part.html")
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
 @app.route('/workorder/add', methods=['GET', 'POST'])
 # Todo: correct str to uppercase
 def workorder_add():
@@ -130,12 +195,19 @@ def workorder_add():
         else:
             pass
     if request.method == 'POST':
+        # regex
+        r = re.compile('^[a-z]{5,}$')
         req = request.form
         logging.info('{}, {}, user attempting to create item'.format(session['uid'], req))
         if req["location"] is '' or req["problem"] is '':
             logging.error('Invalid blank item, location:{}, problem{}'.format(req['location'], req['problem']))
             return render_template("workorder.html", neworder=True, editorder=False,
                                    error='Invalid blank item, please try again.')
+        elif not r.match(req["problem"]):
+            logging.error(
+                'Invalid problem description length, location:{}, problem{}'.format(req['location'], req['problem']))
+            return render_template("workorder.html", neworder=True, editorder=False,
+                                   error='Invalid problem description length, please try again.')
         else:
             sqlstr = 'SELECT * FROM machine WHERE machine_location = {}'.format("'" + req["location"] + "'")
             sqlreturn = sql_query_connection_select(sqlstr)
@@ -325,7 +397,7 @@ def root_add():
         return redirect(url_for('part_add'))
 
 
-@app.route('/addpart', methods=['POST', 'GET'])
+@app.route('/part/add', methods=['POST', 'GET'])
 # todo html return button
 def part_add():
     if request.method == 'POST':

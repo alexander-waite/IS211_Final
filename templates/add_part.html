@@ -16,6 +16,9 @@
             <input type="Reset" name="New Part" value="Reset">
         </form>
         <form action="/"><input type="submit" value="Return"> </form>
+        <form action="{{ url_for('part_import') }}">
+            <input type="submit" value="Import Parts List"> </form>
+        </form>
     </div>
     {% if error %}
         <p class="error"><strong>Error: {{ error }}</strong>
