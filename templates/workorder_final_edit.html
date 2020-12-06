@@ -11,27 +11,26 @@
             <div id="modifyorderbox">
                     <h2 style="text-align: center;">Modify Work Order</h2>
                         <p>
-                            <form action = "/workorder/edit/<{{workorderid}}>" method = "post">
-                                <label for="location">Location:
-                                 <input type="text" autocomplete = "off" name="location" id="mod_location" value={{session['sqlreturndict']['machine_location']}}>
-                                </label><br />
-                                <label for="problem">Problem:
-                                    <input type="text" autocomplete = "off" name="problem" id="mod_problem" value={{session['sqlreturndict']['workorder_description']}} />
-                                </label>
-                                <br/>
-                                 {%if partadded == True%}
-                                 <label for="part_needed_check">Part:
-                                    <input type="text" autocomplete = "off" name="part_needed_text" id = mod_part_needed_text value={{session['sqlreturndict']['part_id']}}>
-                                 </label>
-                                <br />
-                                {%endif%}
-                            <div class="bottom_button_edit">
-                            <input type="submit" name="Submit" value="Submit">
-                            <input type="submit" name="closeorder" value="Close Order">
-                            <input type="reset" value="Reset">
-                            <input type="submit" name="Return" value="Return">
-                            </div>
+                                <form action = "/workorder/edit/<{{workorderid}}>" method = "post">
+                                    <label for="location">Location:
+                                     <input type="text" autocomplete = "off" name="location" id="mod_location" value={{session['sqlreturndict']['machine_location']}}>
+                                    </label><br />
+                                    <label for="problem">Problem:
+                                        <input type="text" autocomplete = "off" name="problem" id="mod_problem" value={{session['sqlreturndict']['workorder_description']}} />
+                                    </label>
+                                    <br/>
+                                     {%if partadded == True%}
+                                     <label for="part_needed_check">Part:
+                                        <input type="text" autocomplete = "off" name="part_needed_text" id = mod_part_needed_text value={{session['sqlreturndict']['part_id']}}>
+                                     </label>
+                                    <br />
+                                    {%endif%}
+                                <input type="submit" name="Submit" value="Submit">
+                                <input type="submit" name="closeorder" value="Close Order">
+                                <input type="reset" value="Reset">
+                                <input type="submit" name="Return" value="Return">
                     </form>
+
         {%endif%}
         {%if closeorder == True%}
         <p>
@@ -42,8 +41,14 @@
                 <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
                 <br />
                 <strong>If the work is completed then please press submit, otherwise press return</strong>
+                 {%if attemptsubmit == False%}
                 <input type="submit" name="Submit" value="Submit">
                 <input type="submit" name="Return" value="Return">
+                 {%endif%}
+                 {%if attemptsubmit == True%}
+                <input type="submit" name="Submit" value="Submit" disabled="disabled">
+                <input type="submit" name="Return" value="Return">
+                 {%endif%}
         </p>
         {%endif%}
 

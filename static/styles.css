@@ -97,9 +97,11 @@ text-align: center;
 #modifyorderbox{
   position:relative;
     height: 200px;
+    text-align: center;
 }
 
 #editorderbox{
+    text-align: center;
   position:relative;
     height: 300px;
 }
@@ -109,22 +111,6 @@ label {
     text-align: left;
     clear: both;
     margin-right:15px;
-}
-
-div.bottom_button {
-  position: absolute;
-  width: 50%;
-  height 100px;
-  bottom: 10px;
-
-}
-
-div.bottom_button_edit {
-  bottom: 10px;
-   position: absolute;
-  width: 50%;
-  bottom: 10px;
-
 }
 
 .partbox {
