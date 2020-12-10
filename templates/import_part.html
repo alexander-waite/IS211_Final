@@ -13,7 +13,16 @@
                 <input type="submit" value="Submit">
                 <input type="reset" value="Reset">
             </form>
+            <form action="/">
+                <input type="submit" value="Return">
+            </form>
         </div>
+        {% if error %}
+            <p class="error"><strong>Error: {{ error }}</strong>
+        {% endif %}
+        {% if success %}
+            <p class="success"><strong> {{ success }}</strong>
+        {% endif %}
     </div>
 </body>
 </html>

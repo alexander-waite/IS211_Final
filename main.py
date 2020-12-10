@@ -26,9 +26,9 @@ def allowed_file(filename):
 
 
 def removefile():
-    if os.path.isfile(UPLOAD_FOLDER+'upload.csv'):
-        os.remove(UPLOAD_FOLDER+'upload.csv')
-        print('old file removed')
+    if os.path.isfile(UPLOAD_FOLDER + 'upload.json'):
+        os.remove(UPLOAD_FOLDER + 'upload.json')
+        print('old JSON file removed')
 
 
 def logfile_start():
@@ -152,32 +152,61 @@ def part_import():
             return render_template("import_part.html", error=errormsg)
         if file and allowed_file(file.filename):
             removefile()
+            # Takes uploaded CSV file, saves locally, then converts from csv to json
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], 'upload.csv'))
             logging.info('file successfully uploaded, upload.csv')
 
-
-            #TODO Convert to JSON
-            #TODO: Parse File
-            #TODO: SQL Sequence
-            csvFilePath = UPLOAD_FOLDER+'upload.csv'
-            jsonFilePath = UPLOAD_FOLDER + 'json_file_name.json'
+            # TODO: Parse File
+            # TODO: SQL Sequence
+            csvFilePath = UPLOAD_FOLDER + 'upload.csv'
+            jsonFilePath = UPLOAD_FOLDER + 'upload.json'
             jsondata = {}
-            with open(csvFilePath) as csvFile:
-                csvreader = csv.DictReader(csvFile)
-                for row in csvreader:
-                    print(row)
-                    """json_id = rows['id']
-                    jsondata[json_id] = rows
+            try:
+                logging.info('Beginning log of file {}'.format(csvFilePath))
 
-            with open(jsonFilePath, 'w') as jsonfile:
-                jsonfile.write(json.dumps(jsondata, indent=4))"""
-
-
-            return render_template("import_part.html")
+                with open(csvFilePath) as csvFile:
+                    csvreader = csv.DictReader(csvFile)
+                    for row in csvreader:
+                        json_id = row['part number']
+                        jsondata[json_id] = row
+                # writes csv file as JSON data
+                with open(jsonFilePath, 'w') as jsonfile:
+                    jsonfile.write(json.dumps(jsondata, indent=4))
+                    logging.info('Successful transfer of csv to json for file {}'.format(csvFilePath))
+                os.remove(UPLOAD_FOLDER + 'upload.csv')
+                logging.info('removed upload.csv'.format(csvFilePath))
+                # json to SQL str and insert per string
+                with open(jsonFilePath, 'r') as jsonfile:
+                    data = json.load(jsonfile)
+                for aa in data.items():
+                    try:
+                        data_list = list(aa[1].values())
+                        print(data_list)
+                        data_list[1] = "'"+data_list[1]+"'"
+                        if not int(data_list[0]):
+                            print('Cannot process sqlstr, skipping line')
+                            continue
+                        else:
+                            sql_str = "INSERT INTO part(part_id,part_description,part_revision) VALUES ({},{},{})".format(
+                                data_list[0], data_list[1], data_list[2])
+                            print(sql_str)
+                            sql_query_connection_insert(sql_str)
+                    except TypeError as e:
+                        print(e)
+                        logging.error('{}occurred, unable to write SQL'.format(TypeError))
+                        return render_template("import_part.html", error="SQL error.")
+                    except ValueError as e:
+                        logging.error('{} occurred, items: {}, unable to write SQL'.format(ValueError, data_list))
+                        pass
+                return render_template("import_part.html", success="Successful upload!")
+            except TypeError as e:
+                print(e)
+                logging.error('error while uploading file, {} , formatting of SQL error'.format(session['username']))
+                return render_template("import_part.html", error="JSON formatting error.")
         else:
             print('error')
             errormsg = 'Unacceptable file submitted, file rejected'
-            return render_template("import_part.html", error = errormsg)
+            return render_template("import_part.html", error=errormsg)
     return render_template("import_part.html")
 
 
@@ -321,7 +350,7 @@ def workorder_close(workorderid):
             return render_template("workorder_final_edit.html", closeorder=True,
                                    workorderid=sessioninfo['workorder_id'], success=successmsg, attemptsubmit=True)
         if request.form.get('Return'):
-            return redirect(url_for('workorder_editor', workorderid=session['sqlreturndict']['workorder_id']))
+            return redirect(url_for('workorder_lookup', workorderid=session['sqlreturndict']['workorder_id']))
         else:
             pass
     if request.method == 'GET':

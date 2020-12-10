@@ -1,0 +1,47 @@
+{
+    "9955280-2": {
+        "part number": "9955280-2",
+        "part description": "printer",
+        "revision number": "2"
+    },
+    "555490": {
+        "part number": "555490",
+        "part description": "wheel",
+        "revision number": "1"
+    },
+    "43245": {
+        "part number": "43245",
+        "part description": "cog",
+        "revision number": "1"
+    },
+    "432432": {
+        "part number": "432432",
+        "part description": "gear",
+        "revision number": "1"
+    },
+    "43232": {
+        "part number": "43232",
+        "part description": "win switch",
+        "revision number": "3"
+    },
+    "12312": {
+        "part number": "12312",
+        "part description": "win dice",
+        "revision number": "1"
+    },
+    "6543": {
+        "part number": "6543",
+        "part description": "screen",
+        "revision number": "1"
+    },
+    "22123": {
+        "part number": "22123",
+        "part description": "screen",
+        "revision number": "1"
+    },
+    "543221": {
+        "part number": "543221",
+        "part description": "small screen",
+        "revision number": "1"
+    }
+}
