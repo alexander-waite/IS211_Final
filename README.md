@@ -58,15 +58,18 @@ Add New Part
 - Part Revision is if the part was revised
 - **Import Parts List**
     - Allows you to select a .csv file that is specifically formatted to add parts.
-   - There is on added already under **test_part_sheet.csv**
+  - Test file is **test_part_sheet.csv**
+  - Converts .csv to .json and saves it locally
+  -  parses the file and logs an error if it is unable to parse the line.
 
 
 
 Notes:
 -
-
-Locations:
-- A15-02 and B12-09
+- main - bak.db in case you need to reset the database. Rename it to main.db and replace the current one
+- flowcharts 
+   - website_flow.html was the beginning idea to work from.
+  - workorder_add.png was basic design of most pages
 
 
 
