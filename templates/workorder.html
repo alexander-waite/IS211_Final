@@ -48,11 +48,16 @@
                      </label>
                     <input type="submit" value="Submit">
                 </p>
+
                     {% if error %}
                         <p class="error"><strong>Error: {{ error }}</strong>
                     {% endif %}
             </form>
-        {% endif %}
+            {% endif %}
+            <form action={{url_for('index')}}>
+                <input type="submit" value="Return">
+            </form>
+
     </div>
     {% endif %}
 

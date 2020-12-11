@@ -16,7 +16,7 @@
                                      <input type="text" autocomplete = "off" name="location" id="mod_location" value={{session['sqlreturndict']['machine_location']}}>
                                     </label><br />
                                     <label for="problem">Problem:
-                                        <input type="text" autocomplete = "off" name="problem" id="mod_problem" value={{session['sqlreturndict']['workorder_description']}} />
+                                        <input type="text" autocomplete = "off" name="problem" id="mod_problem" value="{{session['sqlreturndict']['workorder_description']}}" />
                                     </label>
                                     <br/>
                                      {%if partadded == True%}
@@ -28,8 +28,10 @@
                                 <input type="submit" name="Submit" value="Submit">
                                 <input type="submit" name="closeorder" value="Close Order">
                                 <input type="reset" value="Reset">
-                                <input type="submit" name="Return" value="Return">
                     </form>
+                <form action={{url_for('index')}}>
+                    <input type="submit" value="Return">
+                </form>
 
         {%endif%}
         {%if closeorder == True%}
@@ -57,13 +59,14 @@
              <form action = "/workorder/edit/<{{workorderid}}>/confirm" method = "post">
                 <h2>Confirm Edit Workorder</h2>
                 <strong>Location : </strong>{{session['sqlreturndict']['machine_location']}}<br />
-                <strong>Order Description : </strong>{{session['sqlreturndict']["workorder_description"]}}<br />
+                <strong>Order Description : </strong>{{session['sqlreturndict']['workorder_description']}}<br />
                 <strong>Part ID (if part was used) : </strong>{{session['sqlreturndict']['part_id']}}<br />
                 <br />
                 <strong>If the work is completed then please press submit, otherwise press return</strong>
                 <input type="submit" name="Submit" value="Submit">
-                <input type="submit" name="Return" value="Return">
-        </p>
+        <form action={{url_for('index')}}>
+            <input type="submit" value="Return">
+        </form>
         {%endif%}
                  {% if error %}
             <p class="error"><strong>Error: {{ error }}</strong>

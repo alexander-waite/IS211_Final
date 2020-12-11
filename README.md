@@ -1,16 +1,19 @@
-TODO:
-
-About: A database program to keep track of parts. It will allow the user to:
-
-- Log into database (Username = admin, password = password)
-- Add Parts to inventory
-- Remove Parts from inventory
-- Add / Remove Part quantities to inventory
-- Audit Inventory between time period
+About:
+-
+A database program to keep track of parts. It will allow the user to:
 
 
-Todo:
+- Log into database through root menu (Username = root, password = abc123)
+- Log into database as standard user (username = bob technician, password abc123)  
+- Add Parts to inventory via one by one or use of csv file
+- Add users to program
+- add, edit and close Work-orders
 
-1. Design Database
-2. Design Webpage
-3. Code Program
+____
+
+Notes:
+-
+
+Locations:
+- A15-02 and B12-09
+
