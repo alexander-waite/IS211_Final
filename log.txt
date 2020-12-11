@@ -1,0 +1,286 @@
+INFO:root:started at 2020-12-11 00:16:11.611268
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:16:12.211219
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:16:27.508200
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:17:06.515203
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:17:07.105167
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:17:09] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:17:09] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:17:10] "[37mGET /static/styles.css HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:17:37.149327
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:root:started at 2020-12-11 00:17:41.269641
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:17:41.859594
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:17:52] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:17:52] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:root:started at 2020-12-11 00:18:09.790513
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:18:10.370670
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:18:12] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:18:12] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:18:12] "[37mGET /static/styles.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:18:17] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:18:17] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:19:15.829554
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:16] "[37mGET /workorder/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:21] "[35m[1mPOST /workorder/add HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:21] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:21] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:21] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:21] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:22] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:19:56.378572
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:59] "[35m[1mPOST /workorder/add HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:59] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:59] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:59] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:19:59] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:05] "[35m[1mPOST /workorder/add HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:05] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:05] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:05] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:05] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:20:30.012447
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:30] "[35m[1mPOST /workorder/add HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:30] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:30] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:30] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:20:30] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:21:07.562300
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:08] "[35m[1mPOST /workorder/add HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:08] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:08] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:08] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:08] "[37mGET /workorder/add?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:11] "[32mPOST /workorder/add HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:11] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:11] "[37mGET /login HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT tech_id, tech_name FROM tech WHERE tech_name = 'root' AND tech_password = '', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:20] "[37mPOST /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:23] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:23] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:25] "[37mGET /workorder/add HTTP/1.1[0m" 200 -
+INFO:root:1, ImmutableMultiDict([('location', ''), ('problem', ''), ('part_needed_text', '')]), user attempting to create item
+ERROR:root:Invalid blank item, location:, problem
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:26] "[37mPOST /workorder/add HTTP/1.1[0m" 200 -
+INFO:root:1, ImmutableMultiDict([('location', 'a15-02'), ('problem', ''), ('part_needed_text', '')]), user attempting to create item
+ERROR:root:Invalid blank item, location:a15-02, problem
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:30] "[37mPOST /workorder/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:32] "[32mPOST /workorder/add HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:32] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:32] "[37mGET /workorder/edit HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:34] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:35] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:35] "[37mGET /workorder/edit/1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:38] "[32mPOST /workorder/edit/%3C%3E HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:38] "[37mGET /workorder/edit/1/close HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:39] "[37mPOST /workorder/edit/1/close HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:39] "[32mPOST /workorder/edit/1/close HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:39] "[37mGET /workorder/edit?workorderid=1 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:40] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:41] "[37mGET /workorder/add HTTP/1.1[0m" 200 -
+INFO:root:1, ImmutableMultiDict([('location', 'B12-09'), ('problem', 'a'), ('part_needed_text', '')]), user attempting to create item
+ERROR:root:Invalid problem description length or invalid character, location:B12-09, problem:a
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:45] "[37mPOST /workorder/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:48] "[32mPOST /workorder/add HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:48] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:53] "[32mPOST /root HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:53] "[37mGET /part/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:55] "[37mGET /part/import HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:21:57] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:30:13] "[37mGET /workorder/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:30:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:34:57] "[37mGET /workorder/add HTTP/1.1[0m" 200 -
+INFO:root:1, ImmutableMultiDict([('location', 'A15-02'), ('problem', 'Broke machine'), ('part_needed_check', 'on'), ('part_needed_text', '1234')]), user attempting to create item
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:08] "[37mPOST /workorder/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:14] "[32mPOST /workorder/add HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:14] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:16] "[37mGET /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:17] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:17] "[37mGET /workorder/edit/2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:44] "[37mGET /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:55] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:38:55] "[37mGET /workorder/edit/2 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:39:52] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:39:52] "[37mGET /workorder/edit/3 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:47:33] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:47:33] "[37mGET /workorder/edit/1 HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:48:12] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:48:45.234320
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:53:14.129593
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:18] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT status FROM workorder WHERE workorder_id = '5', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:29] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:39] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:43] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:43] "[37mGET /workorder/edit/4 HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT status FROM workorder WHERE workorder_id = '5', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:46] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:46] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:46] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:46] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:53:46] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:55:17.704871
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:20] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 6
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:23] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:23] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:23] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:23] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:23] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:root:started at 2020-12-11 00:55:30.714757
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:55:31.314798
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:33] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:33] "[37mGET /workorder/edit/4 HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 6
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:36] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:36] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:36] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:36] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:55:36] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:56:02.304737
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:04] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 6
+ERROR:root:SQL Error, SELECT status FROM workorder WHERE workorder_id = '6', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:07] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:root:started at 2020-12-11 00:56:13.054746
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:56:13.650113
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:16] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:16] "[37mGET /workorder/edit/4 HTTP/1.1[0m" 200 -
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '5', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 5
+ERROR:root:SQL Error, SELECT status FROM workorder WHERE workorder_id = '5', Returned empty result
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:18] "[35m[1mPOST /workorder/edit HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:19] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=jquery.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:19] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:19] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:56:19] "[37mGET /workorder/edit?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:58:23.284883
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ERROR:root:SQL Error, SELECT * FROM workorder WHERE workorder_id = '6', Returned empty result
+ERROR:root:Workorder ID does not exist, try again. 6
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:58:23] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:58:25] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\aw604\\PycharmProjects\\IS211_Final\\app.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:root:started at 2020-12-11 00:58:36.514858
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 112-076-349
+INFO:werkzeug: * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:58:36] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:58:38] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 00:58:38] "[37mGET /login HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:01] "[32mPOST /login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:01] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:05] "[37mGET /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:07] "[37mPOST /workorder/edit HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:10] "[32mPOST /workorder/edit HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:10] "[37mGET /workorder/edit/4 HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:00:14] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:43] "[32mPOST /root HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:43] "[37mGET /adduser HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:49] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:50] "[32mPOST /root HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:50] "[37mGET /part/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:51] "[37mGET / HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:52] "[32mPOST /root HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:01:52] "[37mGET /part/add HTTP/1.1[0m" 200 -
+INFO:werkzeug:127.0.0.1 - - [11/Dec/2020 01:03:45] "[37mGET /part/import HTTP/1.1[0m" 200 -

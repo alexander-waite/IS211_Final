@@ -49,7 +49,6 @@ def sql_query_connection_select(sqlstr):
             logging.error('SQL Error, {}, Returned empty result'.format(sqlstr))
         return ret
     except TypeError as e:
-        print(e)
         logging.error('SQL Error, {}, Returned TypeError'.format(sqlstr))
     return None
 
@@ -63,7 +62,6 @@ def sql_query_connection_insert(sqlstr):
         conn.commit()
         conn.close()
     except TypeError as e:
-        print(e)
         print('sql exception has error has occurred')
         return 'error'
     return None
@@ -93,7 +91,6 @@ def edit_workorder(sessioninfo):
                     "'" + str(sessioninfo['part_id']) + "'",
                     "'" + str(sessioninfo['workorder_id']) + "'")
                 a = sql_query_connection_insert(sqlstr)
-                print(a)
                 successmsg = 'Successful workorder edit!'
                 return render_template("workorder_final_edit.html", confirmedit=True,
                                        workorderid=sessioninfo['workorder_id'], success=successmsg)
@@ -125,7 +122,6 @@ def login():
         else:
             session['uid'] = sqlreturn[0][0]
             session['username'] = sqlreturn[0][1]
-            print(session)
             return redirect(url_for('index'))
 
 
@@ -179,7 +175,6 @@ def part_import():
                     data_list = None
                     try:
                         data_list = list(aa[1].values())
-                        print(data_list)
                         data_list[1] = "'" + data_list[1] + "'"
                         if not int(data_list[0]):
                             print('Cannot process sqlstr, skipping line')
@@ -187,10 +182,8 @@ def part_import():
                         else:
                             sql_str = "INSERT INTO part(part_id,part_description,part_revision) VALUES ({},{},{})" \
                                 .format(data_list[0], data_list[1], data_list[2])
-                            print(sql_str)
                             sql_query_connection_insert(sql_str)
                     except TypeError as e:
-                        print(e)
                         logging.error('{}occurred, unable to write SQL'.format(TypeError))
                         return render_template("import_part.html", error="SQL error.")
                     except ValueError as e:
@@ -221,6 +214,7 @@ def workorder_add():
         else:
             pass
     if request.method == 'POST':
+        session_check()
         # regex
         r = re.compile('^[.-9A-Za-z\\\ ]{10,}')
         req = request.form
@@ -284,10 +278,13 @@ def workorder_lookup():
             print('Workorder ID does not exist, try again.')
             return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True,
                                    error='Workorder ID does not exist, try again.')
+        sqlstr = 'SELECT status FROM workorder WHERE workorder_id = {}'.format("'" + req["WorkorderID"] + "'")
+        if sql_query_connection_select(sqlstr)[0][0] == 1:
+            return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True,
+                                   error='Workorder is closed, please try another number.')
         else:
             keys = ('workorder_id', 'workorder_description', 'machine_location', 'part_id', 'status')
             session['sqlreturndict'] = dict(zip(keys, sqlreturn[0]))
-            print(session['sqlreturndict'])
             return redirect(url_for('workorder_editor', workorderid=session['sqlreturndict']['workorder_id']))
     return render_template("workorder.html", neworder=False, editorder=True, lookuporder=True)
 
@@ -343,7 +340,6 @@ def workorder_close(workorderid):
             sqlstr = "SELECT workorder.status FROM workorder WHERE workorder.workorder_id = {}".format(
                 "'" + str(sessioninfo['workorder_id']) + "'")
             c = sql_query_connection_select(sqlstr)
-            print(c)
             if c[0][0] == 1:
                 logging.warning(
                     "Workorder {} attempted to be closed and was already closed".format(sessioninfo['workorder_id']))
@@ -449,7 +445,6 @@ def part_add():
             .format(str(req['part_id']),
                     "'" + str(req['part_description']) + "'",
                     str(req['part_revision']))
-        print(sqlstr)
         e = sql_query_connection_insert(sqlstr)
         if e is not None:
             errormsg = 'Error! Please try again'
@@ -490,17 +485,18 @@ def user_add():
 
 
 if __name__ == '__main__':
-    print('Change has occurred - Flask start again')
     logfile_start()
     logging.info('started at ' + str(datetime.datetime.now()))
-    app.run(debug=True)
+    print('app.py running http://127.0.0.1:5000')
+    app.run(host='127.0.0.1', port='5000', debug=True)
+
 
 # \/\/\/ Linux
-# export FLASK_APP=main.py
+# export FLASK_APP=app.py
 # export FLASK_ENV=development
 # flask run
 # \/\/\/ Windows
-# set FLASK_APP=main.py
+# set FLASK_APP=app.py
 # set FLASK_ENV=development
 # python -m flask run
 #
